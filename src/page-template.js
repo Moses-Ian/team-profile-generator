@@ -3,7 +3,7 @@ const buildExtra = employee => {
 	if (role == 'Manager')
 		return `Office Number: ${employee.getOfficeNumber()}`;
 	if (role == 'Engineer')
-		return `GitHub: ${employee.getGithub()}`;
+		return `GitHub: <a href='https://github.com/${employee.getGithub()}' target='_blank'>${employee.getGithub()}</a>`;
 	if (role == 'Intern')
 		return `School: ${employee.getSchool()}`;
 };
