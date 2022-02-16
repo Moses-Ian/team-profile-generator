@@ -3,7 +3,10 @@
 const Manager = require('./lib/Manager.js');
 const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
+const generatePage = require('./src/page-template');
+const fs = require('fs');
 const inquirer = require('inquirer');
+
 
 //variables
 //====================================================
@@ -132,14 +135,19 @@ function askMoreEmployees() {
 					askMoreEmployees();
 				});
 		else 
-			//we're done -> do something
-			doSomething();
+			//we're done -> generate html
+			generateHTML();
 	});
 };
 
 //step 3: do something
-function doSomething() {
+function generateHTML() {
 	console.log(employeeList);
+	return new Promise((resolve, reject) => {
+		fs.writeFile('./dist/index.html', generatePage(employeeList), err => {
+			err ? console.log(err) : console.log("Success!");
+		});
+	});
 }
 	
 	
