@@ -72,8 +72,26 @@ const internQuestions = [
 	}
 ];
 
-const promptUser = () => {
+const moreEmployeesQuestions = [
+	{
+		type: 'list',
+		name: 'more',
+		message: 'Would you like to add another employee?',
+		choices: ['Engineer', 'Intern', 'Done']
+	}
+];
+
+const askManagerQuestions = () => {
 	return inquirer.prompt(managerQuestions);
 }
-		
-promptUser();
+
+const askMoreEmployees = () => {};
+
+let employeeList = [];
+
+askManagerQuestions()
+	.then(answers => {
+		const {name, id, email, office} = answers;	//destructure the answers...
+		employeeList.push(new Manager(name, id, email, office));	//...and pass them to manager constructor
+		askMoreEmployees();
+	});
