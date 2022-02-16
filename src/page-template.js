@@ -13,7 +13,7 @@ const cardTemplate = employee =>
 				<h2>${employee.getName()}</h2>
 				<h3>${employee.getRole()}</h3>
 				<p>ID: ${employee.getId()}</p>
-				<p>Email: ${employee.getEmail()}</p>
+				<p>Email: <a href='mailto:${employee.getEmail()}' target='_blank'>${employee.getEmail()}</a></p>
 				<p>${buildExtra(employee)}</p>
 			</div>
 `;

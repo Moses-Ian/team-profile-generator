@@ -137,20 +137,26 @@ function askMoreEmployees() {
 		else 
 			//we're done -> generate html
 			generateHTML();
+			copyCSS();		//might as well do these async
 	});
 };
 
-//step 3: do something
+//step 3: generate HTML
 function generateHTML() {
-	console.log(employeeList);
 	return new Promise((resolve, reject) => {
 		fs.writeFile('./dist/index.html', generatePage(employeeList), err => {
-			err ? console.log(err) : console.log("Success!");
+			err ? console.log(err) : console.log("HTML Generated");
 		});
 	});
 }
 	
-	
+function copyCSS() {
+	return new Promise((resolve, reject) => {
+		fs.copyFile('./src/style.css', './dist/style.css', err => {
+			err ? console.log(err) : console.log("CSS Copied!");
+		});
+	});
+}	
 	
 	
 	

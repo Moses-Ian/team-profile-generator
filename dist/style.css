@@ -1,0 +1,55 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+  font-family: verdana, "trebuchet ms", arial;
+}
+
+header {
+	margin: 0px;
+	padding: 8px;
+	background-color: #d142f5;
+}
+
+h1 {
+	text-align: center;
+	color: white;
+}
+
+main {
+	background-color: white;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.card {
+	border: 2px solid black;
+	border-radius: 8px;
+	padding: 0;
+	margin: 8px;
+	box-shadow: 4px 4px 2px #d142f5;
+	flex: 1 0 0;
+}
+
+.card h2 {
+	border-radius: 6px 6px 0 0;
+}
+
+.card h2, 
+.card h3 {
+	margin: 0px;
+	padding: 4px 4px;
+	background-color: #42c5f5;
+}
+
+.card p {
+	background-color: white;
+	padding: 4px 4px;
+	margin: 0;
+	border-radius: 0 0 6px 6px;
+}
