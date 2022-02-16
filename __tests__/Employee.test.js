@@ -8,21 +8,27 @@ test('creates an employee object', () => {
 	expect(employee.email).toBe('Alice@company.com');
 });
 
-test('gets player name', () => {
+test('gets employee name', () => {
 	const employee = new Employee('Alice', 1, 'Alice@company.com');
 	
 	expect(employee.getName()).toBe('Alice');
 });
 
-test('gets player id', () => {
+test('gets employee id', () => {
 	const employee = new Employee('Alice', 1, 'Alice@company.com');
 	
 	expect(employee.getId()).toBe(1);
 });
 
-test('gets player email', () => {
+test('gets employee email', () => {
 	const employee = new Employee('Alice', 1, 'Alice@company.com');
 	
 	expect(employee.getEmail()).toBe('Alice@company.com');
+});
+
+test('gets employee role', () => {
+	const employee = new Employee('Alice', 1, 'Alice@company.com');
+	
+	expect(employee.getRole()).toBe('Employee');
 });
 
