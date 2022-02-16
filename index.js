@@ -1,8 +1,12 @@
+//dependencies
+//====================================================
 const Manager = require('./lib/Manager.js');
 const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
 const inquirer = require('inquirer');
 
+//variables
+//====================================================
 const managerQuestions = [
 	{
 		type: 'input',
@@ -67,7 +71,7 @@ const internQuestions = [
 	},
 	{
 		type: 'input',
-		name: 'office',
+		name: 'school',
 		message: "What is the Intern's school?"
 	}
 ];
@@ -81,17 +85,110 @@ const moreEmployeesQuestions = [
 	}
 ];
 
+let employeeList = [];
+
+//functions
+//====================================================
+const doSomething = () => console.log(employeeList);
+
 const askManagerQuestions = () => {
 	return inquirer.prompt(managerQuestions);
 }
 
-const askMoreEmployees = () => {};
+const askEngineerQuestions = () => {
+	return inquirer.prompt(engineerQuestions);
+}
 
-let employeeList = [];
+const askInternQuestions = () => {
+	return inquirer.prompt(internQuestions);
+}
+
+const askMoreEmployees = () => {
+	inquirer.prompt(moreEmployeesQuestions)
+	.then(answers => {
+		if (answers.more == 'Engineer')
+			askEngineerQuestions()
+				.then(answers => {
+					const {name, id, email, github} = answers;	//destructure the answers...
+					employeeList.push(new Engineer(name, id, email, github));	//...and pass them to engineer constructor...
+					askMoreEmployees();	//...and ask if they have more employees
+				});
+		else if (answers.more == 'Intern')
+			askInternQuestions()
+				.then(answers => {
+					const {name, id, email, school} = answers;
+					employeeList.push(new Intern(name, id, email, school));
+					askMoreEmployees();
+				});
+		else 
+			//we're done -> do something
+			doSomething();
+	});
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// start of code
+//====================================================
 
 askManagerQuestions()
 	.then(answers => {
 		const {name, id, email, office} = answers;	//destructure the answers...
-		employeeList.push(new Manager(name, id, email, office));	//...and pass them to manager constructor
-		askMoreEmployees();
+		employeeList.push(new Manager(name, id, email, office));	//...and pass them to manager constructor...
+		askMoreEmployees();	//...and ask if they have more employees
 	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
