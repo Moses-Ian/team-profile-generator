@@ -89,7 +89,6 @@ let employeeList = [];
 
 //functions
 //====================================================
-const doSomething = () => console.log(employeeList);
 
 const askManagerQuestions = () => {
 	return inquirer.prompt(managerQuestions);
@@ -103,8 +102,20 @@ const askInternQuestions = () => {
 	return inquirer.prompt(internQuestions);
 }
 
-const askMoreEmployees = () => {
-	inquirer.prompt(moreEmployeesQuestions)
+// start of code
+//====================================================
+
+//step 1: ask for manager details
+askManagerQuestions()
+	.then(answers => {
+		const {name, id, email, office} = answers;	//destructure the answers...
+		employeeList.push(new Manager(name, id, email, office));	//...and pass them to manager constructor...
+		askMoreEmployees();	//...and ask if they have more employees
+	})
+	
+//step 2: recursively ask for engineer/intern details
+function askMoreEmployees() {
+	return inquirer.prompt(moreEmployeesQuestions)
 	.then(answers => {
 		if (answers.more == 'Engineer')
 			askEngineerQuestions()
@@ -126,39 +137,10 @@ const askMoreEmployees = () => {
 	});
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// start of code
-//====================================================
-
-askManagerQuestions()
-	.then(answers => {
-		const {name, id, email, office} = answers;	//destructure the answers...
-		employeeList.push(new Manager(name, id, email, office));	//...and pass them to manager constructor...
-		askMoreEmployees();	//...and ask if they have more employees
-	});
-	
+//step 3: do something
+function doSomething() {
+	console.log(employeeList);
+}
 	
 	
 	
