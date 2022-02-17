@@ -134,10 +134,11 @@ function askMoreEmployees() {
 					employeeList.push(new Intern(name, id, email, school));
 					askMoreEmployees();
 				});
-		else 
+		else {
 			//we're done -> generate html
 			generateHTML();
 			copyCSS();		//might as well do these async
+		}
 	});
 };
 
