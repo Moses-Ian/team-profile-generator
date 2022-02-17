@@ -8,7 +8,7 @@ This program will generate a high quality team profile webpage based on your inp
 
 Follow this video:
 
-[video]()
+[video](https://watch.screencastify.com/v/9KfmKzLtQtvypl2ePngb)
 
 1. Clone the repository
 2. From the command line, navigate to the repository directory
